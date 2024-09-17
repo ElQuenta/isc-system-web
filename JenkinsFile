@@ -1,9 +1,7 @@
 pipeline {
-    agent {
-        docker {
-            image 'cypress/base:12'
-            args '-u root'
-        }
+    agent any
+    tools {
+        nodejs 'node-20'
     }
     stages {
         stage('Clone Project') {
@@ -19,6 +17,7 @@ pipeline {
         stage('Run Cypress Tests') {
             steps {
                 sh '''
+                    xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" \
                     npx cypress run --spec "cypress/e2e/loginPaul.cy.ts" --browser chrome --headless
                 '''
             }
