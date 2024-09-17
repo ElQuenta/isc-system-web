@@ -16,7 +16,7 @@ pipeline {
         }
         stage('cypress') {
             steps {
-                sh 'npx cypress run --browser chrome --spec "cypress/e2e/loginPaul.cy.ts"'
+                sh 'npx cypress run --spec "cypress/e2e/loginPaul.cy.ts" --browser chrome'
             }
         }
     }
