@@ -12,6 +12,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
+                sh 'sudo apt-get install xvfb'
             }
         }
         stage('cypress') {
