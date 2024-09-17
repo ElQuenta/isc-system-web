@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Project') {
             steps {
-                git 'https://github.com/PaulLandaeta/isc-system-web.git'
+                git 'https://github.com/ElQuenta/isc-system-web.git'
             }
         }
         stage('Install Dependencies') {
@@ -14,9 +14,9 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Build') {
+        stage('cypress') {
             steps {
-                sh 'npx cypress open'
+                sh 'npx cypress run --browser chrome --spec "cypress/e2e/loginPaul.cy.ts"'
             }
         }
     }
